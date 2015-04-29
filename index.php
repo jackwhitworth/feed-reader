@@ -19,6 +19,10 @@ session_start();
   endif; 
 ?>
 
+<?php if(isset($_SESSION['success'])): ?>
+<div class="alert alert-success"><?= $_SESSION['success']; ?></div>div>
+?>
+
 <form class="form-inline" method="post" action="/addfeed.php" style="padding-top: 25px;padding-right: 50px; padding-bottom: 25px; padding-left: 50px; float: left; width: 33%">
   	<div class="form-group">
      		<label for="exampleInputName2">Feed Title</label>
