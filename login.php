@@ -25,7 +25,7 @@
   endif; 
 ?>
 
-  <form class="form-inline" method="post" action="/adduser.php" style="padding-top: 25px;padding-right: 50px; padding-bottom: 25px; padding-left: 50px; float: left; width: 33%">
+  <form class="form-inline" method="post" action="/signin.php" style="padding-top: 25px;padding-right: 50px; padding-bottom: 25px; padding-left: 50px; float: left; width: 33%">
       <h2> SIGN IN </h2>
       <div class="form-group">
           <label for="exampleInputName2">EMAIL</label>
@@ -35,7 +35,7 @@
       <br>
       <div class="form-group">
           <label for="exampleInputName2">PASSWORD</label>
-          <input type="text" class="form-control" name="password" id="password" placeholder="************" style="width: 84%;">
+          <input type="password" class="form-control" name="password" id="password" placeholder="************" style="width: 84%;">
       </div>
       <br>
       <br>      
@@ -52,7 +52,7 @@
       <br>
       <div class="form-group">
           <label for="exampleInputName2">PASSWORD</label>
-          <input type="text" class="form-control" name="newpassword" id="newpassword" placeholder="************" style="width: 84%;">
+          <input type="password" class="form-control" name="newpassword" id="newpassword" placeholder="************" style="width: 84%;">
       </div>
       <br>
       <br>      

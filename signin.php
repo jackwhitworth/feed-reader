@@ -1,16 +1,28 @@
 <?php
+session_start();
 
-require 'dbConnection.php'
+require 'dbConnection.php';
 
-$sql = "SELECT COUNT(*) FROM users WHERE email = :email";
+$useremail = (isset($_POST['email'])) ? $_POST['email'] : '';
+$userpassword = (isset($_POST['password'])) ? $_POST['password'] : '';
+
+$sql = "SELECT id, password FROM users WHERE email = :email";
 $statement = $db_connection->prepare($sql);
 $statement->bindValue(':email', $useremail, PDO::PARAM_STR);
-$result = $statement->execute();
+$statement->execute();
+$result = $statement->fetch(PDO::FETCH_ASSOC);
+$password = $result['password'];
 
-if ($statement->fetchColumn() == 1) {
-	$success = 'You are now logged in  ';
-	$_SESSION['success'] = $success;
-	header('Location: http://feed-reader.dev/index.php');
+if (password_verify($userpassword, $password) === false) {
+	$error = 'Your email address or password is incorrect';
+	$_SESSION['error'] = $error;
+	header('Location: http://feed-reader.dev/login.php');
 	exit();
+}
 
+$_SESSION['loggedIn'] = true;
+$_SESSION['userId'] = $result['id'];
+$_SESSION['loginSuccess'] = "You are now logged in";
+
+header('Location: http://feed-reader.dev/index.php');
 ?> 
