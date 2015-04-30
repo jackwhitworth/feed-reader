@@ -27,6 +27,7 @@ $feeds = $db_connection->query($sql);
 		<tr>
 			<td><?= $feed['title']; ?></td>
 			<td><a href="<?= $feed['url']; ?>"><?= $feed['url']; ?></a></td>
+			<td><button type="button" class="btn"> <a href="feedRead.php"> View Feed </a> </button> </td>
 		</tr>
 	<?php endforeach; ?>		
 </table>
