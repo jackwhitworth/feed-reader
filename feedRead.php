@@ -2,10 +2,17 @@
 session_start();
 
 require "dbConnection.php";
+$id = $_GET['id'];
+$sql = "SELECT url FROM feeds WHERE id=:id LIMIT 1";
+$sth = $db_connection->prepare($sql);
+$sth->bindParam(':id', $id);
+$sth->execute();
+$result = $sth->fetch();
+
 
 $html = "";
 $url = "http://hexus.net/rss/";
-$xml = simplexml_load_file($url);
+$xml = simplexml_load_file($result['url']);
 for($i = 0; $i < 10; $i++){
 	$title = $xml->channel->item[$i]->title;
 	$link = $xml->channel->item[$i]->link;
@@ -17,7 +24,6 @@ for($i = 0; $i < 10; $i++){
 	$html .= "<br />$pubDate<hr />";
 }
 echo $html;
-
 ?>
 
 <!doctype html>
