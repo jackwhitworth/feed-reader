@@ -32,3 +32,4 @@ $_SESSION['success'] = 'You are now signed up, please login below.';
 
 header('Location: http://feed-reader.dev/login.php');
 ?>
+

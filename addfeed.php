@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+// connect to database
 require "dbConnection.php";
 
 $feedname = (isset($_POST['title'])) ? trim($_POST['title']) : '';
@@ -37,3 +37,4 @@ $sth->bindParam(':url', $feedurl, PDO::PARAM_STR, 12);
 $sth->execute();
 
 header('Location: http://feed-reader.dev/feedList.php');
+
