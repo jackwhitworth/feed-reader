@@ -28,6 +28,13 @@ if ($statement->fetchColumn() > 0) {
 $sql = "INSERT INTO users (email, password) VALUES ('$useremail', '$userpassword')";
 $db_connection->exec($sql);
 
+$usersubject = 'Thanks for signing up ' . $useremail;
+$usermessage = 'Thanks for signing up mate';
+
+if (!mail($useremail,$usersubject,$usermessage)) {
+	$_SESSION['error'] = 'Error sending welcome email';
+} 
+
 $_SESSION['success'] = 'You are now signed up, please login below.';
 
 header('Location: http://feed-reader.dev/login.php');
